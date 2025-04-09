@@ -1,0 +1,7 @@
+{
+    "loggedIn": true,
+    "user": {
+        "name": "Nom du joueur",
+        "avatar": "URL de l'avatar"
+    }
+}

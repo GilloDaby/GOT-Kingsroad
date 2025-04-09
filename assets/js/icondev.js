@@ -1,0 +1,16 @@
+// Déclaration des types marqueurs avec suffixe 'Icon' pour cohérence
+var castleIcon = L.icon({iconUrl:'media/icones/castle.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var towerIcon = L.icon({iconUrl:'media/icones/tower.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var altarofmemoriesIcon = L.icon({iconUrl:'media/icones/altarofmemories.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var signpostIcon = L.icon({iconUrl:'media/icones/signpost.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var sidequestIcon = L.icon({iconUrl:'media/icones/sidequest.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var historicsiteIcon = L.icon({iconUrl:'media/icones/historicsite.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var occupiedsiteIcon = L.icon({iconUrl:'media/icones/occupiedsite.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var bountiesIcon = L.icon({iconUrl:'media/icones/bounties.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var banditcampIcon = L.icon({iconUrl:'media/icones/banditcamp.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var enemyhideoutIcon = L.icon({iconUrl:'media/icones/enemyhideout.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var gerociousbeastIcon = L.icon({iconUrl:'media/icones/gerociousbeast.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var echoesofthepastIcon = L.icon({iconUrl:'media/icones/echoesofthepast.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var godhavenIcon = L.icon({iconUrl:'media/icones/godhaven.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var lostletterIcon = L.icon({iconUrl:'media/icones/lostletter.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
+var citymysteriesIcon = L.icon({iconUrl:'media/icones/citymysteries.png', iconSize:[34, 40], iconAnchor:[17, 40], popupAnchor:[0, -40]});
