@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Désactive le listing des répertoires
 Options -Indexes
 
@@ -33,3 +34,40 @@ ErrorDocument 403 /errors/403.html
 ErrorDocument 404 /errors/404.html
 ErrorDocument 500 /errors/500.html
 
+=======
+# Désactive le listing des répertoires
+Options -Indexes
+
+# Active le moteur de réécriture
+RewriteEngine On
+
+# Redirection HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://got-kingsroad.com/$1 [L,R=301]
+
+# Règles d'API
+RewriteRule ^api/t/user$ api.php [L,QSA]
+
+# Règles pour Discord OAuth
+RewriteRule ^auth/discord/?$ auth/discord.php [L]
+RewriteRule ^auth/discord/callback/?$ auth/discord/callback.php [L]
+
+# Règles pour Google OAuth
+RewriteRule ^auth/google/callback/?$ auth/google/callback.php [L]
+
+# Protection des fichiers sensibles
+<FilesMatch "^(config\.ini|config\.php|.*\.db|\.env|\.ht)">
+    Require all denied
+</FilesMatch>
+
+# Autorisation explicite des fichiers nécessaires
+<FilesMatch "(discord\.php|callback\.php)$">
+    Require all granted
+</FilesMatch>
+
+# Gestion des erreurs
+ErrorDocument 403 /errors/403.html
+ErrorDocument 404 /errors/404.html
+ErrorDocument 500 /errors/500.html
+
+>>>>>>> 370412e90a0bf4fcde37b45a7d90cb5f096c75df

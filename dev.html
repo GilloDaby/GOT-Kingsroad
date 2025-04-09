@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -77,4 +78,85 @@
     <script src="assets/js/markers-teyvat.js"></script>
     <script src="assets/js/devsum.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev GOT - Kingsroad</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="assets/inc/tailwind.min.css">
+    <link rel="stylesheet" href="assets/css/dev.css">
+</head>
+<body>
+
+
+    <div id="mainpage" class="flex flex-wrap h-full">
+        <div id="menu" class="overflow-y">
+           <div id="title" class="text-white font-bold">
+            Dev Map GOT - Kingsroad
+           </div>
+           <div id="title2">
+            <label class="switch"><input type="checkbox" id="dbmark" /><span class="cursor"></span><span class="texte"> Cacher marqueurs DB</span></label>
+           </div>
+           <div id="selector">
+            <form>
+                <input type="radio" id="item1" name="markselect" data-type="castle"><label for="item1"><span><img src="media/icones/castle.png" /> Castle</span></label><br>
+                <input type="radio" id="item2" name="markselect" data-type="tower"><label for="item2"><span><img src="media/icones/tower.png" /> Tower</span></label><br>
+                <input type="radio" id="item3" name="markselect" data-type="altarofmemories"><label for="item3"><span><img src="media/icones/altarofmemories.png" /> Altar of Memories</span></label><br>
+                <input type="radio" id="item4" name="markselect" data-type="signpost"><label for="item4"><span><img src="media/icones/signpost.png" /> Sign Post</span></label><br>
+                <input type="radio" id="item5" name="markselect" data-type="sidequest"><label for="item5"><span><img src="media/icones/sidequest.png" /> Side Quest</span></label><br>
+                <input type="radio" id="item6" name="markselect" data-type="historicsite"><label for="item6"><span><img src="media/icones/historicsite.png" /> Historic Site</span></label><br>
+                <input type="radio" id="item7" name="markselect" data-type="occupiedsite"><label for="item7"><span><img src="media/icones/occupiedsite.png" /> Occupied Site</span></label><br>
+                <input type="radio" id="item8" name="markselect" data-type="bountie"><label for="item8"><span><img src="media/icones/bountie.png" /> Bounties Quest</span></label><br>
+                <input type="radio" id="item9" name="markselect" data-type="banditcamp" checked><label for="item9"><span><img src="media/icones/banditcamp.png" /> Bandit Camp</span></label><br>
+                <input type="radio" id="item10" name="markselect" data-type="enemyhideout"><label for="item10"><span><img src="media/icones/enemyhideout.png" /> Enemy Hideouts</span></label><br>
+                <input type="radio" id="item11" name="markselect" data-type="gerociousbeast"><label for="item11"><span><img src="media/icones/gerociousbeast.png" /> Gerocious Beast</span></label><br>
+                <input type="radio" id="item12" name="markselect" data-type="echoesofthepast"><label for="item12"><span><img src="media/icones/echoesofthepast.png" /> Echoes Of the Past</span></label><br>
+                <input type="radio" id="item13" name="markselect" data-type="godhaven"><label for="item13"><span><img src="media/icones/godhaven.png" /> God's Haven</span></label><br>
+                <input type="radio" id="item14" name="markselect" data-type="lostletter"><label for="item14"><span><img src="media/icones/lostletter.png" /> Lost Letter</span></label><br>
+                <input type="radio" id="item15" name="markselect" data-type="citymysteries"><label for="item15"><span><img src="media/icones/citymysteries.png" /> City Mysteries</span></label><br>
+            </form>
+           </div>
+        </div>
+        <div id="map-wrap">
+            <div id="devmap"></div>
+        </div>        
+    </div>
+
+    <!-- Scripts dans le bon ordre -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    <script>
+        // Langue chargée en premier si nécessaire
+        var langue = langFR;
+
+        // Initialisation basique de la map (à adapter)
+        document.addEventListener('DOMContentLoaded', function() {
+            var map = L.map('devmap').setView([51.505, -0.09], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+            
+            // Vérification que les icônes sont disponibles
+            if (typeof castle !== 'undefined') {
+                L.marker([51.5, -0.09], {icon: castle}).addTo(map)
+                    .bindPopup("Test d'icône");
+            } else {
+                console.error("Les icônes ne sont pas chargées !");
+            }
+        });
+    </script>
+    
+    <!-- Chargement des scripts spécifiques -->
+    <script src="assets/js/text.js"></script>
+	<script src="assets/js/icondev.js"></script> <!-- Doit être avant devsum.js -->
+
+    <script src="assets/js/markers-teyvat.js"></script>
+    <script src="assets/js/devsum.js"></script>
+</body>
+>>>>>>> 370412e90a0bf4fcde37b45a7d90cb5f096c75df
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
@@ -561,4 +562,569 @@ $(document).ready(function() {
     <script type="text/javascript" src="assets/js/markers-teyvat.js"></script>
     <script type="text/javascript" src="assets/js/map.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-language" content="fr" />
+    <meta charset="utf-8">
+    <meta name="keywords" content="Map Interactive; GOT KingsRoad;">
+    <meta name="description" content="Map Interactive GOT KingsRoad" />
+    <meta name="google-site-verification" content="bliVr8lt1OPhn3qLBDpT03pxeT5zdVY0xu12OmXtZis" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Map Game Of Thrones - Kingsroad </title>
+    <link rel="icon" href="media/icones/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="assets/inc/tailwind.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/inc/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="assets/inc/easy-button.css">
+    <link rel="stylesheet" type="text/css" href="assets/inc/lity.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style2.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script type="text/javascript" src="assets/inc/leaflet.edgebuffer.js"></script>
+    <script type="text/javascript" src="assets/inc/easy-button.js"></script>
+    <script type="text/javascript" src="assets/inc/lity.js"></script>
+    <script type="text/javascript" src="assets/js/text.js"></script>
+</head>
+
+<body class="show-menu">
+    <div class="flex flex-wrap h-full">
+        <div id="menu" class="hidden bg-gray-50">
+            <div id="menuFR" class="hidden">
+                <div id="topmenuFR" class="bg-gray-50" style="position: sticky; top:0px; left: 0px;">
+                    <img src="media/banniere.jpg" class="mx-auto" />
+                    <div id="menutitle" class="mx-auto text-yellow-600 text-center font-extralight mt-2">Map Interactive by GilloDaby<br/><span id="totalFR" class="mx-auto my-0 text-xs text-center uppercase text-black">Chargement des marqueurs...</span></div>
+                    <div id="logincontainerFR" class="logincontainer bg-gray-50 m-4">
+                        <h1 class="bg-gray-50">Connexion avec</h1>
+                        <div class="flex justify-items-stretch text-center m-1">
+                            <a href="/discord-login.php?popup=true" id="discord-btn" class="flex p-1 border border-indigo-400 bg-indigo-400 rounded text-white items-center justify-center w-full mr-0.5" style="filter: grayscale(0); opacity: 1;" onclick="window.open(this.href, 'discord_auth', 'width=600,height=700'); return false;">
+                                <img src="media/icones/discord.png" class="h-6 mr-2" alt="Discord">Discord</a>
+                            <a href="/google-login.php?popup=true" id="google-btn" class="flex p-1 border-2 border-blue-500 bg-white rounded text-black items-center justify-center w-full ml-0.5" style="filter: grayscale(0); opacity: 1;" onclick="window.open(this.href, 'google_auth', 'width=600,height=700'); return false;">
+                                <img src="media/icones/google.png" class="h-6" alt="Google"></a>
+                        </div>
+                    </div>
+                    <div id="loggedcontainerFR" class="hidden justify-items-stretch text-center m-4">
+                        <a href="https://got-kingsroad.com/api/t/logout" id="loggedFR" class="flex p-2 border border-gray-800 bg-gray-400 rounded text-gray-900 text-xs items-center justify-center w-full" style="filter: grayscale(0); opacity: 1;">
+                            <strong>Déconnexion</strong>
+                            <img src="media/icones/logog.png" class="h-6 rounded-full ml-2">
+                        </a>
+                    </div>
+                    <div id="localFR" class="flex space-x-2 text-center m-4">
+                        <a id="BtnInfo" href="#!" title="Infos" class="btninfo py-1 px-2 bg-yellow-700 rounded text-xs text-white w-1/5 align-middle">Info</a>
+                        <a id="BtnLang" href="#!" title="English Version" class="btnlg py-1 px-2 bg-blue-600 rounded text-xs text-white w-full">EN</a>
+                        <a id="BtnReset" href="#!" title="Reset des Markers" class="btnreset py-1 px-2 bg-red-600 rounded text-xs text-white w-full">Reset</a>
+                        <a id="BtnExport" href="#!" title="Sauvegarder les Markers locaux" download="GotKingsroadMapMarkers.txt" class="btnsave py-1 px-2 bg-purple-600 rounded text-xs text-white w-full">Export</a>
+                        <a id="BtnImport" href="#" title="Charger les Markers locaux" class="btnload py-1 px-2 bg-green-600 rounded text-xs text-white w-full">Import</a>
+                        <input type="file" id="ImportBox" accept=".txt" class="hidden">
+                    </div>
+                    <div id="distantFR" class="hidden space-x-2 text-center items-center m-4">
+                        <a id="BtnInfo" href="#!" title="Infos" class="btninfo py-1 px-2 bg-yellow-700 rounded text-xs text-white w-1/5 align-middle">Info</a>
+                        <a id="BtnLang" href="#!" title="English Version" class="btnlg py-1 px-2 bg-blue-600 rounded text-xs text-white w-1/5 align-middle">EN</a>
+                        <a id="BtnReset" href="#!" title="Reset des Markers" class="btnreset py-1 px-2 bg-red-600 rounded text-xs text-white w-1/5 align-middle">Reset</a>
+                        <a id="BtnMerge" href="#!" title="Fusion des Markers locaux avec le compte Discord" class="btnmerge py-1 px-2 bg-purple-600 rounded text-xs text-white w-2/5 items-center flex"><img src="media/icones/merge.png" style="height: 18px;"/> <span class="w-full">Fusionner</span></a>
+                    </div>
+                    <div id="selectmap">
+                        <div class="panel">
+                        </div>
+                    </div>
+                    <div id="title2">
+                        <label class="switch"><input type="checkbox" id="hidemarkFR" class="option" data-option="hideswitch" /><span class="cursor"></span><span class="texte"> Cacher les marqueurs cochés</span></label>
+                    </div>
+                </div>
+                <div id="MarkerSelectFR" class="p-2 pt-0 menulist">
+                    <li class="accordion title">Le Nord</li>
+                    <div class="panel">
+                        <ul class="grid grid-cols-2 gap-2 mb-3 text-gray-800 text-sm text-center w-full">
+                            <li class="marker"><a id="btnFRcastle" href="#!" data-type="castle" class="itembtn"><img src="media/icones/castle.png" /> <span class="font-bold">Château</span></a></li>
+                            <li class="marker"><a id="btnFRtower" href="#!" data-type="tower" class="itembtn"><img src="media/icones/tower.png" /> <span class="font-bold">Tour</span></a></li>
+                            <li class="marker"><a id="btnFRaltarofmemories" href="#!" data-type="altarofmemories" class="itembtn"><img src="media/icones/altarofmemories.png" /> <span class="font-bold">Autel des souvenirs</span></a></li>
+                            <li class="marker"><a id="btnFRbeyondthewall" href="#!" data-type="beyondthewall" class="itembtn"><img src="media/icones/beyondthewall.png" /> <span class="font-bold">beyond the wall</span></a></li>
+                            <li class="marker"><a id="btnFRwormwalks" href="#!" data-type="wormwalks" class="itembtn"><img src="media/icones/wormwalks.png" /> <span class="font-bold">WormWalks</span></a></li>
+                            <li class="marker"><a id="btnFRdrogon" href="#!" data-type="drogon" class="itembtn"><img src="media/icones/drogon.png" /> <span class="font-bold">drogon</span></a></li>                            
+                            <li class="marker"><a id="btnFRsignpost" href="#!" data-type="signpost" class="itembtn"><img src="media/icones/signpost.png" /> <span class="font-bold">Panneau de téléportation</span></a></li>
+                            <li class="marker"><a id="btnFRsidequest" href="#!" data-type="sidequest" class="itembtn"><img src="media/icones/sidequest.png" /> <span class="font-bold">Quêtes</span></a></li>
+                            <li class="marker"><a id="btnFRhistoricsite" href="#!" data-type="historicsite" class="itembtn"><img src="media/icones/historicsite.png" /> <span class="font-bold">Sites Historiques</span></a></li>
+                            <li class="marker"><a id="btnFRoccupiedsite" href="#!" data-type="occupiedsite" class="itembtn"><img src="media/icones/occupiedsite.png" /> <span class="font-bold">Sites occupés</span></a></li>
+                            <li class="marker"><a id="btnFRbountie" href="#!" data-type="bountie" class="itembtn"><img src="media/icones/bountie.png" /> <span class="font-bold">Primes</span></a></li>
+                            <li class="marker"><a id="btnFRbanditcamp" href="#!" data-type="banditcamp" class="itembtn"><img src="media/icones/bandiecamp.png" /> <span class="font-bold">Camp enenemies</span></a></li>
+                            <li class="marker"><a id="btnFRenemyhideout" href="#!" data-type="enemyhideout" class="itembtn"><img src="media/icones/enemyhideout.png" /> <span class="font-bold">Base ennemies</span></a></li>
+                            <li class="marker"><a id="btnFRgerociousbeast" href="#!" data-type="gerociousbeast" class="itembtn"><img src="media/icones/gerociousbeast.png" /> <span class="font-bold">Bêtes féroces</span></a></li>
+                            <li class="marker"><a id="btnFRechoesofthepast" href="#!" data-type="echoesofthepast" class="itembtn"><img src="media/icones/echoofthepast.png" /> <span class="font-bold">Échos du passé</span></a></li>
+                            <li class="marker"><a id="btnFRgodhaven" href="#!" data-type="godhaven" class="itembtn"><img src="media/icones/godhaven.png" /> <span class="font-bold">Havre des Dieux</span></a></li>
+                            <li class="marker"><a id="btnFRlostletter" href="#!" data-type="lostletter" class="itembtn"><img src="media/icones/lostletter.png" /> <span class="font-bold">Lettres perdu</span></a></li>
+                            <li class="marker"><a id="btnFRcitymysteries" href="#!" data-type="citymysteries" class="itembtn"><img src="media/icones/citymysteries.png" /> <span class="font-bold">Mystères de la ville</span></a></li>
+                        </ul>
+                    </div>
+
+                    <li class="accordion title">Le Bief</li>
+                    <div class="panel">
+                        <ul class="grid grid-cols-2 gap-2 mb-3 text-gray-800 text-sm text-center w-full">
+                            <li class="marker"><a id="btnFRcastlereach" href="#!" data-type="castlereach" class="itembtn"><img src="media/icones/castle.png" /> <span class="font-bold">Château</span></a></li>
+                            <li class="marker"><a id="btnFRtowerreach" href="#!" data-type="towerreach" class="itembtn"><img src="media/icones/tower.png" /> <span class="font-bold">Tour</span></a></li>
+                            <li class="marker"><a id="btnFRsignpostreach" href="#!" data-type="signpostreach" class="itembtn"><img src="media/icones/signpost.png" /> <span class="font-bold">Panneau de téléportation</span></a></li>
+                            <li class="marker"><a id="btnFRsidequestreach" href="#!" data-type="sidequestreach" class="itembtn"><img src="media/icones/sidequest.png" /> <span class="font-bold">Quêtes</span></a></li>
+                            <li class="marker"><a id="btnFRhistoricsitereach" href="#!" data-type="historicsitereach" class="itembtn"><img src="media/icones/historicsite.png" /> <span class="font-bold">Sites Historiques</span></a></li>
+                            <li class="marker"><a id="btnFRoccupiedsitereach" href="#!" data-type="occupiedsitereach" class="itembtn"><img src="media/icones/occupiedsite.png" /> <span class="font-bold">Sites occupés</span></a></li>
+                            <li class="marker"><a id="btnFRbountiesreach" href="#!" data-type="bountiesreach" class="itembtn"><img src="media/icones/bountie.png" /> <span class="font-bold">Primes</span></a></li>
+                            <li class="marker"><a id="btnFRbanditcampreach" href="#!" data-type="banditcampreach" class="itembtn"><img src="media/icones/bandiecamp.png" /> <span class="font-bold">Camp enenemies</span></a></li>
+                            <li class="marker"><a id="btnFRenemyhideoutreach" href="#!" data-type="enemyhideoutreach" class="itembtn"><img src="media/icones/enemyhideout.png" /> <span class="font-bold">Base ennemies</span></a></li>
+                            <li class="marker"><a id="btnFRgerociousbeastreach" href="#!" data-type="gerociousbeastreach" class="itembtn"><img src="media/icones/gerociousbeast.png" /> <span class="font-bold">Bêtes féroces</span></a></li>
+                            <li class="marker"><a id="btnFRechoesofthepastreach" href="#!" data-type="echoesofthepastreach" class="itembtn"><img src="media/icones/echoofthepast.png" /> <span class="font-bold">Échos du passé</span></a></li>
+                            <li class="marker"><a id="btnFRgodhavenreach" href="#!" data-type="godhavenreach" class="itembtn"><img src="media/icones/godhaven.png" /> <span class="font-bold">Havre des Dieux</span></a></li>
+                            <li class="marker"><a id="btnFRlostletterreach" href="#!" data-type="lostletterreach" class="itembtn"><img src="media/icones/lostletter.png" /> <span class="font-bold">Lettres perdu</span></a></li>
+                            <li class="marker"><a id="btnFRcitymysteriesreach" href="#!" data-type="citymysteriesreach" class="itembtn"><img src="media/icones/citymysteries.png" /> <span class="font-bold">Mystères de la ville</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">Les terres de la couronne</li>
+                    <div class="panel">
+                        <ul class="grid grid-cols-2 gap-2 mb-3 text-gray-800 text-sm text-center w-full">
+                            <li class="marker"><a id="btnFRcastleredkeep" href="#!" data-type="castleredkeep" class="itembtn"><img src="media/icones/castle.png" /> <span class="font-bold">Castle</span></a></li>
+                            <li class="marker"><a id="btnFRsignpostredkeep" href="#!" data-type="signpostredkeep" class="itembtn"><img src="media/icones/signpost.png" /> <span class="font-bold">Signposts</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">The Neck</li>
+                    <div class="panel">
+                        <ul class="flex justify-between">
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">La Vallée </li>
+                    <div class="panel">
+                        <ul class="flex justify-items-start">
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">Îles de fer</li>
+                    <div class="panel">
+                        <ul class="flex justify-between">
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">Le Conflans</li>
+                    <div class="panel">
+                        <ul class="flex justify-items-start">
+                        </ul>
+                    </div>
+                    <li class="accordion title">Les Terres de l'Ouest</li>
+                    <div class="panel">
+                        <ul class="flex justify-between">
+                        </ul>
+                    </div>
+                    <li class="accordion title">Les Terres de L'orage</li>
+                    <div class="panel">
+                        <ul class="flex justify-between">
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">Dorne</li>
+                    <div class="panel">
+                        <ul class="flex justify-items-start pt-1">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="menuEN" class="">
+                <div id="topmenuEN" class="bg-gray-50" style="position: sticky; top:0px; left: 0px;">
+                    <img src="media/banniere.jpg" class="mx-auto" />
+                    <div id="menutitle" class="mx-auto text-yellow-600 text-center font-extralight mt-2">Interactive Map by GilloDaby<br/><span id="totalEN" class="mx-auto my-0 text-xs text-center uppercase text-black">Loading Markers...</span></div>
+                    <div id="logincontainerEN" class="logincontainer bg-gray-50 m-4">
+                        <h1 class="bg-gray-50">Login with</h1>
+                        <div class="flex justify-items-stretch text-center m-1">
+                            <a href="/discord-login.php?popup=true" id="discord-btn" class="flex p-1 border border-indigo-400 bg-indigo-400 rounded text-white items-center justify-center w-full mr-0.5" style="filter: grayscale(0); opacity: 1;" onclick="window.open(this.href, 'discord_auth', 'width=600,height=700'); return false;">
+                                <img src="media/icones/discord.png" class="h-6 mr-2" alt="Discord">Discord</a>
+                            <a href="/google-login.php?popup=true" id="google-btn" class="flex p-1 border-2 border-blue-500 bg-white rounded text-black items-center justify-center w-full ml-0.5" style="filter: grayscale(0); opacity: 1;" onclick="window.open(this.href, 'google_auth', 'width=600,height=700'); return false;">
+                                <img src="media/icones/google.png" class="h-6" alt="Google"></a>
+                        </div>
+                    </div>
+                    <div id="loggedcontainerEN" class="hidden justify-items-stretch text-center m-4">
+                        <a href="https://got-kingsroad.com/api/t/logout" id="loggedEN" class="flex p-2 border border-gray-800 bg-gray-400 rounded text-gray-900 text-xs items-center justify-center w-full" style="filter: grayscale(0); opacity: 1;">
+                            <strong>Log out</strong>
+                            <img src="media/icones/logog.png" class="h-6 rounded-full ml-2">
+                        </a>
+                    </div>
+                    <div id="localEN" class="flex space-x-2 text-center m-4">
+                        <a id="BtnInfo" href="#!" title="Infos" class="btninfo py-1 px-2 bg-yellow-700 rounded text-xs text-white w-full">Info</a>
+                        <a id="BtnLang" href="#!" title="Version Française" class="btnlg py-1 px-2 bg-blue-600 rounded text-xs text-white w-full">FR</a>
+                        <a id="BtnReset" href="#!" title="Reset Markers" class="btnreset py-1 px-2 bg-red-600 rounded text-xs text-white w-full">Reset</a>
+                        <a id="BtnExport" href="#!" title="Save Markers" download="GotKingsroadMapMarkers.txt" class="btnsave py-1 px-2 bg-purple-600 rounded text-xs text-white w-full">Export</a>
+                        <a id="BtnImport" href="#" title="Load Markers" class="btnload py-1 px-2 bg-green-600 rounded text-xs text-white w-full">Import</a>
+                    </div>
+                    <div id="distantEN" class="hidden space-x-2 text-center items-center m-4">
+                        <a id="BtnInfo" href="#!" title="Infos" class="btninfo py-1 px-2 bg-yellow-700 rounded text-xs text-white w-1/5 align-middle">Info</a>
+                        <a id="BtnLang" href="#!" title="Version Française" class="btnlg py-1 px-2 bg-blue-600 rounded text-xs text-white w-1/5 align-middle">FR</a>
+                        <a id="BtnReset" href="#!" title="Reset Markers" class="btnreset py-1 px-2 bg-red-600 rounded text-xs text-white w-1/5 align-middle">Reset</a>
+                        <a id="BtnMerge" href="#!" title="Merge local Markers to Discord account" class="btnmerge py-1 px-2 bg-purple-600 rounded text-xs text-white w-2/5 items-center flex"><img src="media/icones/merge.png" style="height: 18px;"/> <span class="w-full">Merge</span></a>
+                    </div>
+
+                    <div id="title2">
+                        <label class="switch"><input type="checkbox" id="hidemarkEN" class="option" data-option="hideswitch" /><span class="cursor"></span><span class="texte"> Hide checked markers</span></label>
+                    </div>
+                </div>
+                <div id="MarkerSelectEN" class="p-2 pt-0 menulist">
+                    <li class="accordion title">The North</li>
+                    <div class="panel">
+                        <ul class="grid grid-cols-2 gap-2 mb-3 text-gray-800 text-sm text-center w-full">
+                            <li class="marker"><a id="btnFRcastle" href="#!" data-type="castle" class="itembtn"><img src="media/icones/castle.png" /> <span class="font-bold">Castle</span></a></li>
+                            <li class="marker"><a id="btnFRtower" href="#!" data-type="tower" class="itembtn"><img src="media/icones/tower.png" /> <span class="font-bold">Tower</span></a></li>
+                            <li class="marker"><a id="btnFRaltarofmemories" href="#!" data-type="altarofmemories" class="itembtn"><img src="media/icones/altarofmemories.png" /> <span class="font-bold">Altar of Memories</span></a></li>
+                            <li class="marker"><a id="btnFRbeyondthewall" href="#!" data-type="beyondthewall" class="itembtn"><img src="media/icones/beyondthewall.png" /> <span class="font-bold">beyond the wall</span></a></li>
+                            <li class="marker"><a id="btnFRwormwalks" href="#!" data-type="wormwalks" class="itembtn"><img src="media/icones/wormwalks.png" /> <span class="font-bold">WormWalks</span></a></li>
+                            <li class="marker"><a id="btnFRdrogon" href="#!" data-type="drogon" class="itembtn"><img src="media/icones/drogon.png" /> <span class="font-bold">drogon</span></a></li>                            
+                            <li class="marker"><a id="btnFRsignpost" href="#!" data-type="signpost" class="itembtn"><img src="media/icones/signpost.png" /> <span class="font-bold">Signposts</span></a></li>
+                            <li class="marker"><a id="btnFRsidequest" href="#!" data-type="sidequest" class="itembtn"><img src="media/icones/sidequest.png" /> <span class="font-bold">Side Quests</span></a></li>
+                            <li class="marker"><a id="btnFRhistoricsite" href="#!" data-type="historicsite" class="itembtn"><img src="media/icones/historicsite.png" /> <span class="font-bold">Historic Site</span></a></li>
+                            <li class="marker"><a id="btnFRoccupiedsite" href="#!" data-type="occupiedsite" class="itembtn"><img src="media/icones/occupiedsite.png" /> <span class="font-bold">Occupied Sites</span></a></li>
+                            <li class="marker"><a id="btnFRbountie" href="#!" data-type="bountie" class="itembtn"><img src="media/icones/bountie.png" /> <span class="font-bold">Bounties</span></a></li>
+                            <li class="marker"><a id="btnFRbanditcamp" href="#!" data-type="banditcamp" class="itembtn"><img src="media/icones/bandiecamp.png" /> <span class="font-bold">Bandit Camps Group</span></a></li>
+                            <li class="marker"><a id="btnFRenemyhideout" href="#!" data-type="enemyhideout" class="itembtn"><img src="media/icones/enemyhideout.png" /> <span class="font-bold">Enemy Hideouts Group</span></a></li>
+                            <li class="marker"><a id="btnFRgerociousbeast" href="#!" data-type="gerociousbeast" class="itembtn"><img src="media/icones/gerociousbeast.png" /> <span class="font-bold">Gerocious Beasts</span></a></li>
+                            <li class="marker"><a id="btnFRechoesofthepast" href="#!" data-type="echoesofthepast" class="itembtn"><img src="media/icones/echoofthepast.png" /> <span class="font-bold">Echoes of the Past Group</span></a></li>
+                            <li class="marker"><a id="btnFRgodhaven" href="#!" data-type="godhaven" class="itembtn"><img src="media/icones/godhaven.png" /> <span class="font-bold">Gods' Haven Group</span></a></li>
+                            <li class="marker"><a id="btnFRlostletter" href="#!" data-type="lostletter" class="itembtn"><img src="media/icones/lostletter.png" /> <span class="font-bold">Lost Letter Group</span></a></li>
+                            <li class="marker"><a id="btnFRcitymysteries" href="#!" data-type="citymysteries" class="itembtn"><img src="media/icones/citymysteries.png" /> <span class="font-bold">City Mysteries</span></a></li>
+                        </ul>
+                    </div>
+
+                    <li class="accordion title">The Reach</li>
+                    <div class="panel">
+                        <ul class="grid grid-cols-2 gap-2 mb-3 text-gray-800 text-sm text-center w-full">
+                            <li class="marker"><a id="btnFRcastlereach" href="#!" data-type="castlereach" class="itembtn"><img src="media/icones/castle.png" /> <span class="font-bold">Castle</span></a></li>
+                            <li class="marker"><a id="btnFRtowerreach" href="#!" data-type="towerreach" class="itembtn"><img src="media/icones/tower.png" /> <span class="font-bold">Tower</span></a></li>
+                            <li class="marker"><a id="btnFRsignpostreach" href="#!" data-type="signpostreach" class="itembtn"><img src="media/icones/signpost.png" /> <span class="font-bold">Signposts</span></a></li>
+                            <li class="marker"><a id="btnFRsidequestreach" href="#!" data-type="sidequestreach" class="itembtn"><img src="media/icones/sidequest.png" /> <span class="font-bold">Side Quests</span></a></li>
+                            <li class="marker"><a id="btnFRhistoricsitereach" href="#!" data-type="historicsitereach" class="itembtn"><img src="media/icones/historicsite.png" /> <span class="font-bold">Historic Site</span></a></li>
+                            <li class="marker"><a id="btnFRoccupiedsitereach" href="#!" data-type="occupiedsitereach" class="itembtn"><img src="media/icones/occupiedsite.png" /> <span class="font-bold">Occupied Sites</span></a></li>
+                            <li class="marker"><a id="btnFRbountiesreach" href="#!" data-type="bountiesreach" class="itembtn"><img src="media/icones/bountie.png" /> <span class="font-bold">Bounties</span></a></li>
+                            <li class="marker"><a id="btnFRbanditcampreach" href="#!" data-type="banditcampreach" class="itembtn"><img src="media/icones/bandiecamp.png" /> <span class="font-bold">Bandit Camps Group</span></a></li>
+                            <li class="marker"><a id="btnFRenemyhideoutreach" href="#!" data-type="enemyhideoutreach" class="itembtn"><img src="media/icones/enemyhideout.png" /> <span class="font-bold">Enemy Hideouts Group</span></a></li>
+                            <li class="marker"><a id="btnFRgerociousbeastreach" href="#!" data-type="gerociousbeastreach" class="itembtn"><img src="media/icones/gerociousbeast.png" /> <span class="font-bold">Gerocious Beasts</span></a></li>
+                            <li class="marker"><a id="btnFRechoesofthepastreach" href="#!" data-type="echoesofthepastreach" class="itembtn"><img src="media/icones/echoofthepast.png" /> <span class="font-bold">Echoes of the Past Group</span></a></li>
+                            <li class="marker"><a id="btnFRgodhavenreach" href="#!" data-type="godhavenreach" class="itembtn"><img src="media/icones/godhaven.png" /> <span class="font-bold">Gods' Haven Group</span></a></li>
+                            <li class="marker"><a id="btnFRlostletterreach" href="#!" data-type="lostletterreach" class="itembtn"><img src="media/icones/lostletter.png" /> <span class="font-bold">Lost Letter Group</span></a></li>
+                            <li class="marker"><a id="btnFRcitymysteriesreach" href="#!" data-type="citymysteriesreach" class="itembtn"><img src="media/icones/citymysteries.png" /> <span class="font-bold">City Mysteries</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">CrownLands</li>
+                    <div class="panel">
+                        <ul class="grid grid-cols-2 gap-2 mb-3 text-gray-800 text-sm text-center w-full">
+                            <li class="marker"><a id="btnFRcastleredkeep" href="#!" data-type="castleredkeep" class="itembtn"><img src="media/icones/castle.png" /> <span class="font-bold">Castle</span></a></li>
+                            <li class="marker"><a id="btnFRsignpostredkeep" href="#!" data-type="signpostredkeep" class="itembtn"><img src="media/icones/signpost.png" /> <span class="font-bold">Signposts</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">The Neck</li>
+                    <div class="panel">
+                        <ul class="flex justify-between">
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">The Vale </li>
+                    <div class="panel">
+                        <ul class="flex justify-items-start">
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">Iron Island</li>
+                    <div class="panel">
+                        <ul class="flex justify-between">
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">Riverlands</li>
+                    <div class="panel">
+                        <ul class="flex justify-items-start">
+                        </ul>
+                    </div>
+                    <li class="accordion title">Westerlands</li>
+                    <div class="panel">
+                        <ul class="flex justify-between">
+                        </ul>
+                    </div>
+                    <li class="accordion title">Stormlands</li>
+                    <div class="panel">
+                        <ul class="flex justify-between">
+                        </ul>
+                    </div>
+                    
+                    <li class="accordion title">Dorne</li>
+                    <div class="panel">
+                        <ul class="flex justify-items-start pt-1">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="" id="map-wrap">
+            <div id="mapid" class="leaflet-container leaflet-fade-anim w-full h-full" tabindex="0" style="background-color: #17181c;"></div>
+        </div>
+    </div>
+    
+    <div id="infoEN" class="lity-hide bg-white overflow-y-auto rounded text-center p-4 m-4 max-w-2xl">
+        <img class="m-auto" src="media/logo.jpg"/>
+        <h4>GilloDaby - GOT Kingsroad</h4>
+        <h3 class="font-bold text-red-500 mt-4">Release V2.0 | THE REACH UPDATE!</h3>
+        <p class="mt-4">
+            - Added The Reach Marker
+            <br>
+            - Fix some marker!
+            <br>
+            - Fully support French language!
+        </p>
+        
+        <p class="mt-4"><span class="font-bold text-red-600">V3.0 IN PROGRESS
+            </span><br>
+            - To be add in the V3.0 for release !
+            <br>
+            - Flower in the North
+            
+            <br>
+        </p>
+        <p class="mt-4"><span class="font-bold text-red-600">V3.5 IN PROGRESS
+            </span><br>
+            - To be add in the V3.5 for release! 
+            <br>
+            - Flower in the Reach
+        </p>
+        
+        <p class="mt-4"><span class="font-bold text-red-600">V4.0 IN PROGRESS
+            </span><br>
+            - To be add in the V4.0 for release! 
+            <br>
+            - Adding Login options (Discord/Google)
+        </p>
+        
+        <p class="mt-4 font-bold text-red-600">Think about refreshing Map with CTRL + F5<br>
+            to clear the browser cache and get <span class="text-red-600">the last markers update.</span>
+        </p>
+    </div>
+    
+    <div id="infomajEN" class="lity-hide bg-white overflow-y-auto rounded text-center p-4 m-4 max-w-2xl">
+        <img class="m-auto" src="media/logo.jpg"/>
+        <h4>GilloDaby - GOT Kingsroad</h4>
+        <h3 class="font-bold text-red-500 mt-4">Release V2.0 | THE REACH UPDATE!</h3>
+        <p class="mt-4">
+            - Added The Reach Marker
+            <br>
+            - Fix some marker!
+            <br>
+            - Fully support French language!
+        </p>
+        
+        <p class="mt-4"><span class="font-bold text-red-600">V3.0 IN PROGRESS
+            </span><br>
+            - To be add in the V3.0 for release !
+            <br>
+            - Flower in the North
+        </p>
+        <p class="mt-4"><span class="font-bold text-red-600">V3.5 IN PROGRESS
+            </span><br>
+            - To be add in the V3.5 for release! 
+            <br>
+            - Flower in the Reach
+        </p>
+        
+        <p class="mt-4"><span class="font-bold text-red-600">V4.0 IN PROGRESS
+            </span><br>
+            - To be add in the V4.0 for release! 
+            <br>
+            - Adding Login options (Discord/Google)
+        </p>
+        
+        <p class="mt-4 font-bold text-red-600">Think about refreshing Map with CTRL + F5<br>
+            to clear the browser cache and get <span class="text-red-600">the last markers update.</span>
+        </p>
+    </div>
+    
+    <div id="infomajFR" class="lity-hide bg-white overflow-y-auto rounded text-center p-4 m-4 max-w-2xl">
+        <img class="m-auto" src="media/logo.jpg"/>
+        <h4>GilloDaby - GOT Kingsroad</h4>
+        <h3 class="font-bold text-red-500 mt-4">Release V2.0| THE REACH UPDATE!</h3>
+        <p class="mt-4">
+            - Added The Reach Marker
+            <br>
+            - Fix some marker!
+        </p>
+        
+        <p class="mt-4"><span class="font-bold text-red-600">V3.0 IN PROGRESS
+            </span><br>
+            - To be add in the V3.0 for release !
+            <br>
+            - Flower in the North
+        </p>
+        <p class="mt-4"><span class="font-bold text-red-600">V3.5 IN PROGRESS
+            </span><br>
+            - To be add in the V3.5 for release! 
+            <br>
+            - Flower in the Reach
+        </p>
+        
+        <p class="mt-4"><span class="font-bold text-red-600">V4.0 IN PROGRESS
+            </span><br>
+            - To be add in the V4.0 for release! 
+            <br>
+            - Adding Login options (Discord/Google)
+        </p>
+        
+        <p class="mt-4 font-bold text-red-600">Think about refreshing Map with CTRL + F5<br>
+            to clear the browser cache and get <span class="text-red-600">the last markers update.</span>
+        </p>
+    </div>
+
+    <script type="text/javascript">
+    if (!localStorage.getItem('MapLng')) {
+        localStorage.MapLng = "EN";
+    };
+    if (localStorage.MapLng === "FR") {
+        var langue = langFR;
+        var lgmenu = "FR";
+        $('#menuEN').addClass('hidden');
+        $('#menuFR').removeClass('hidden');
+    } else {
+        var langue = langEN;
+        var lgmenu = "EN";
+    };
+
+    var acc = document.getElementsByClassName("accordion");
+    var acc2 = document.getElementsByClassName("accordion2");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("ouvert");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+
+    for (i = 0; i < acc2.length; i++) {
+        acc2[i].addEventListener("click", function() {
+            this.classList.toggle("ouvert2");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+
+    // Système de connexion/déconnexion
+    function checkAuthStatus() {
+        $.get('/api/auth/status', function(response) {
+            if (response.loggedIn) {
+                // Masquer les boutons de connexion
+                $('#logincontainerFR').addClass('hidden');
+                $('#logincontainerEN').addClass('hidden');
+                
+                // Afficher les boutons de déconnexion
+                $('#loggedcontainerFR').removeClass('hidden');
+                $('#loggedcontainerEN').removeClass('hidden');
+                
+                // Mettre à jour l'avatar si disponible
+                if (response.user && response.user.avatar) {
+                    $('#loggedFR img').attr('src', response.user.avatar);
+                    $('#loggedEN img').attr('src', response.user.avatar);
+                }
+            } else {
+                // Masquer les boutons de déconnexion
+                $('#loggedcontainerFR').addClass('hidden');
+                $('#loggedcontainerEN').addClass('hidden');
+                
+                // Afficher les boutons de connexion
+                $('#logincontainerFR').removeClass('hidden');
+                $('#logincontainerEN').removeClass('hidden');
+            }
+        }).fail(function() {
+            console.log('Erreur de vérification du statut de connexion');
+        });
+    }
+
+    // Vérifier l'état de connexion au chargement
+    $(document).ready(function() {
+        checkAuthStatus();
+        
+        // Écouter les messages de la popup de connexion
+        window.addEventListener('message', function(event) {
+            if (event.origin !== "https://got-kingsroad.com") return;
+            
+            if (event.data === 'login_success') {
+                checkAuthStatus();
+            }
+        });
+    });
+    </script>
+	
+<script>
+// Gestion de l'état d'authentification
+function updateAuthUI(loggedIn, userData = null) {
+    const lang = localStorage.MapLng === "FR" ? "FR" : "EN";
+    
+    if (loggedIn) {
+        // Masquer le bouton de connexion
+        $(`#logincontainer${lang}`).addClass('hidden');
+        // Afficher le bouton de déconnexion
+        $(`#loggedcontainer${lang}`).removeClass('hidden');
+        
+        // Mettre à jour l'avatar si disponible
+        if (userData && userData.avatar) {
+            $(`#logged${lang} img`).attr('src', userData.avatar);
+        }
+    } else {
+        // Masquer le bouton de déconnexion
+        $(`#loggedcontainer${lang}`).addClass('hidden');
+        // Afficher le bouton de connexion
+        $(`#logincontainer${lang}`).removeClass('hidden');
+    }
+}
+
+// Vérifier l'état de connexion
+function checkAuthStatus() {
+    fetch('/api/auth/status')
+        .then(response => response.json())
+        .then(data => {
+            updateAuthUI(data.loggedIn, data.user);
+        })
+        .catch(error => {
+            console.error('Error checking auth status:', error);
+        });
+}
+
+// Écouter les messages des popups
+window.addEventListener('message', function(event) {
+    if (event.data.type === 'authUpdate') {
+        updateAuthUI(event.data.loggedIn, event.data.user);
+    }
+});
+
+// Gestion de la déconnexion
+$('#loggedFR, #loggedEN').on('click', function(e) {
+    e.preventDefault();
+    fetch('/api/auth/logout', { method: 'POST' })
+        .then(() => {
+            updateAuthUI(false);
+            window.location.reload();
+        })
+        .catch(console.error);
+});
+
+// Au chargement de la page
+$(document).ready(function() {
+    checkAuthStatus();
+});
+</script>
+
+    <script type="text/javascript" src="assets/js/icon.js"></script>
+    <script type="text/javascript" src="assets/js/markers-teyvat.js"></script>
+    <script type="text/javascript" src="assets/js/map.js"></script>
+</body>
+>>>>>>> 370412e90a0bf4fcde37b45a7d90cb5f096c75df
 </html>
