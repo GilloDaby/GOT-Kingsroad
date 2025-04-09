@@ -3,7 +3,7 @@
 **Site web dédié** au jeu *Game of Thrones: Kingsroad* (officiel ou fan-made), offrant des guides, statistiques, et ressources pour les joueurs.  
 👉 **Lien du site** : [https://got-kingsroad.com/](https://got-kingsroad.com/)  
 
-![Bannière GOT-Kingsroad](https://got-kingsroad.com/media/banniere.jpg)) *(*Remplacez par une capture du jeu ou du site*)*
+![Bannière GOT-Kingsroad](https://got-kingsroad.com/media/banniere.jpg)
 
 ---
 
